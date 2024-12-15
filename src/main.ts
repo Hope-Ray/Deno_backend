@@ -1,6 +1,5 @@
 import app from "./app.ts";
 
-const PORT = 5000;
+const PORT = Number(Deno.env.get("PORT")) || 4000;
 
-// Use Deno's built-in listener
 Deno.serve({ port: PORT }, (req) => app.fetch(req));
