@@ -1,5 +1,6 @@
 import { Context, ErrorHandler, Env } from "npm:hono";
 import type { StatusCode } from "npm:hono/utils/http-status";
+import env from "../env.ts";
 
 import { INTERNAL_SERVER_ERROR, OK } from "./http-status-codes.ts";
 
@@ -11,13 +12,12 @@ const onError: ErrorHandler<Env> = (err, c: Context<Env>) => {
       ? (currentStatus as StatusCode)
       : INTERNAL_SERVER_ERROR;
 
-  const env = Deno.env.get("NODE_ENV");
-  console.log("ENV", env);
+  const env1 = env.DENO_ENV;
 
   return c.json(
     {
       message: err.message,
-      stack: env === "production" ? undefined : err.stack,
+      stack: env1 === "production" ? undefined : err.stack,
     },
     statusCode
   );
