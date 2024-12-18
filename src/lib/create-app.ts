@@ -4,8 +4,12 @@ import { NOT_FOUND } from "../utils/http-status-codes.ts";
 import onError from "../utils/on-error.ts";
 import { pinoLogger } from "../middlewares/pino-logger.ts";
 
+export function createRouter() {
+  return new OpenAPIHono({ strict: false });
+}
+
 export default function createApp() {
-  const app = new OpenAPIHono({ strict: false });
+  const app = createRouter();
   app.use(pinoLogger());
 
   app.get("/", (c) => {
