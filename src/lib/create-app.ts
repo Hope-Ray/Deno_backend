@@ -3,9 +3,10 @@ import { NOT_FOUND as NOT_FOUND_MESSAGE } from "../utils/http-status-phrases.ts"
 import { NOT_FOUND } from "../utils/http-status-codes.ts";
 import onError from "../utils/on-error.ts";
 import { pinoLogger } from "../middlewares/pino-logger.ts";
+import defaultHook from "./default-hook.ts";
 
 export function createRouter() {
-  return new OpenAPIHono({ strict: false });
+  return new OpenAPIHono({ strict: false, defaultHook });
 }
 
 export default function createApp() {
