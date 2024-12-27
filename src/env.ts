@@ -17,9 +17,15 @@ try {
     DENO_ENV: Deno.env.get("DENO_ENV"),
     LOG_LEVEL: Deno.env.get("LOG_LEVEL"),
   });
+  console.log("LOG LEVEL VALUE", Deno.env.get("LOG_LEVEL"));
 } catch (e) {
   const error = e as ZodError;
-  console.error("❌ Invalid ENV:", error.flatten().fieldErrors);
+  console.error("LOG_LEVEL", Deno.env.get("LOG_LEVEL"));
+  console.error(
+    "❌ Invalid ENV:1",
+    Deno.env.get("LOG_LEVEL"),
+    error.flatten().fieldErrors
+  );
   Deno.exit(1);
 }
 

@@ -10,7 +10,7 @@
     "zod": "npm:zod@^3.24.1"
   },
   "tasks": {
-    "start": "deno run --allow-net --allow-env --env-file --allow-sys --watch src/main.ts"
+    "start": "deno run --allow-net --allow-env  --env-file --allow-sys --watch src/main.ts"
   },
   "compilerOptions": {
     "jsx": "precompile",
