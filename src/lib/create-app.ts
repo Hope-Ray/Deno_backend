@@ -13,16 +13,16 @@ export default function createApp() {
   const app = createRouter();
   app.use(pinoLogger());
 
-  app.get("/", (c) => {
-    return c.text("Hello Hono!");
-  });
+  // app.get("/", (c) => {
+  //   return c.text("Hello Honoe!");
+  // });
 
   app.notFound((c) => {
     return c.json(
       {
         message: `${NOT_FOUND_MESSAGE} - ${c.req.path}`,
       },
-      NOT_FOUND
+      NOT_FOUND,
     );
   });
 

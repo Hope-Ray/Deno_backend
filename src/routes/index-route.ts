@@ -1,6 +1,8 @@
 import { createRoute } from "@hono/zod-openapi";
 import { createRouter } from "../lib/create-app.ts";
-import { z } from "@hono/zod-openapi";
+import jsonContent from "../utils/json-content.ts";
+import * as HttpStatusCode from "../utils/http-status-codes.ts";
+import createMessageObjectSchema from "../utils/create-message-object.ts";
 
 const router = createRouter().openapi(
   createRoute({
@@ -8,16 +10,10 @@ const router = createRouter().openapi(
     method: "get",
     path: "/",
     responses: {
-      200: {
-        content: {
-          "application/json": {
-            schema: z.object({
-              message: z.string(),
-            }),
-          },
-        },
-        description: "Tasks API Index",
-      },
+      [HttpStatusCode.OK]: jsonContent(
+        createMessageObjectSchema("Task Api"),
+        "Task API Index",
+      ),
     },
   }),
   (c) => {
@@ -25,9 +21,9 @@ const router = createRouter().openapi(
       {
         message: "Task API",
       },
-      200
+      HttpStatusCode.OK,
     );
-  }
+  },
 );
 
 export default router;

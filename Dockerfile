@@ -20,4 +20,4 @@ RUN deno cache src/main.ts
 EXPOSE 5000
 
 # Command to run the Deno application
-CMD ["run", "--allow-net", "src/main.ts"]
+CMD ["run", "--allow-net", "--allow-env", "--allow-sys" "--port=${PORT}", "--readonly","src/main.ts"]

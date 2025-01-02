@@ -10,7 +10,7 @@ const defaultHook: Hook<any, any, any, any> = (result, c) => {
         success: result.success,
         error: result.error,
       },
-      UNPROCESSABLE_ENTITY
+      UNPROCESSABLE_ENTITY,
     );
   }
 };
