@@ -7,3 +7,5 @@
 # Ignore migrations folder
 src/db/migrations/
 
+# Ignore node_modules
+node_modules/
